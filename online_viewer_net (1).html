@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="google-site-verification" content="YZVkQiLJ-1IbHINpdLWU0ZzApxBKpidSLsFx8OhOGng" />
+  <title>Mama Bro collections</title>
+  <style>
+    :root {
+      --bg: #060611;
+      --bg-soft: #101020;
+      --bg-softer: #181828;
+      --text: #f5f5f7;
+      --muted: #a0a0b8;
+      --accent: #ffb300;
+      --accent-2: #ff6f3c;
+      --accent-soft: rgba(255, 179, 0, 0.16);
+      --border: #282842;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+    }
+
+    [data-theme="light"] {
+      --bg: #f5f5fa;
+      --bg-soft: #ffffff;
+      --bg-softer: #ececf5;
+      --text: #151522;
+      --muted: #535373;
+      --accent: #ff8c00;
+      --accent-2: #ff4b3a;
+      --accent-soft: rgba(255, 140, 0, 0.14);
+      --border: #d5d5e6;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1b1b30 0, var(--bg) 40%, #020209 100%);
+      color: var(--text);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(90deg, rgba(4,4,10,0.96), rgba(12,12,24,0.96));
+      border-bottom: 1px solid var(--border);
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      background: radial-gradient(circle at 20% 0, #ffffff, #ffb300 40%, #ff6f3c 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1rem;
+      color: #1b1306;
+      box-shadow: 0 0 22px rgba(255, 179, 0, 0.7);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand-text-main {
+      font-weight: 650;
+      letter-spacing: 0.05em;
+      font-size: 0.98rem;
+      text-transform: uppercase;
+    }
+
+    .brand-text-sub {
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .nav-btn {
+      padding: 6px 11px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--muted);
+      font-size: 0.82rem;
+      cursor: pointer;
+    }
+
+    .nav-btn.active,
+    .nav-btn:hover {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      color: var(--text);
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .theme-toggle {
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--bg-soft);
+      padding: 5px 11px;
+      font-size: 0.78rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      color: var(--muted);
+    }
+
+    .primary-btn {
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #1b1306;
+      padding: 7px 16px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 0 16px rgba(255, 179, 0, 0.7);
+      white-space: nowrap;
+    }
+
+    .layout {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 18px 14px 80px;
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 1.25fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      header {
+        align-items: flex-start;
+        flex-wrap: wrap;
+      }
+    }
+
+    .main-column {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, rgba(255,179,0,0.18), rgba(10,10,22,0.96));
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 16px 16px 18px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.4fr);
+      gap: 16px;
+    }
+
+    @media (max-width: 720px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .hero-title {
+      font-size: 1.28rem;
+      font-weight: 650;
+      margin-bottom: 4px;
+    }
+
+    .hero-sub {
+      font-size: 0.86rem;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .tag-pill {
+      font-size: 0.72rem;
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(0,0,0,0.18);
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .ghost-btn {
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--bg-soft);
+      padding: 6px 12px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      color: var(--muted);
+    }
+
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 12px;
+      font-size: 0.76rem;
+      color: var(--muted);
+    }
+
+    .hero-stat-box {
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(0,0,0,0.16);
+    }
+
+    .hero-right {
+      border-radius: var(--radius-md);
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      padding: 10px 12px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .hero-right-title {
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .hero-right-sub {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .category-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .category-chip {
+      font-size: 0.74rem;
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--bg-softer);
+      color: var(--muted);
+      cursor: pointer;
+    }
+
+    .category-chip.active {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      color: var(--text);
+    }
+
+    .section-card {
+      background: var(--bg-soft);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 12px 12px 14px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .section-sub {
+      font-size: 0.74rem;
+      color: var(--muted);
+    }
+
+    .pill-small {
+      font-size: 0.7rem;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+    }
+
+    .product-card {
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255,255,255,0.06);
+      background: var(--bg-softer);
+      padding: 9px 9px 10px;
+      font-size: 0.78rem;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .product-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 6px;
+      align-items: flex-start;
+    }
+
+    .product-name {
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+
+    .product-pill {
+      font-size: 0.7rem;
+      padding: 3px 7px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.06);
+      color: var(--muted);
+    }
+
+    .product-price {
+      font-size: 0.76rem;
+      color: var(--muted);
+    }
+
+    .product-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-top: 2px;
+    }
+
+    .product-tag {
+      font-size: 0.7rem;
+      padding: 3px 7px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    .product-btn-row {
+      margin-top: 6px;
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .product-btn {
+      font-size: 0.74rem;
+      padding: 5px 9px;
+      border-radius: 999px;
+      border: none;
+      background: var(--accent);
+      color: #1b1306;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .product-btn.secondary {
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid var(--accent-soft);
+    }
+
+    .disclaimer {
+      margin-top: 8px;
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .sidebar-card {
+      background: var(--bg-soft);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 10px 10px 12px;
+      font-size: 0.8rem;
+    }
+
+    .sidebar-title {
+      font-size: 0.86rem;
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    .input-row {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-top: 6px;
+    }
+
+    .input-row label {
+      font-size: 0.74rem;
+      color: var(--muted);
+    }
+
+    .input-row input,
+    .input-row textarea {
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--bg-softer);
+      color: var(--text);
+      padding: 7px 9px;
+      font-size: 0.78rem;
+    }
+
+    .small-btn {
+      margin-top: 8px;
+      padding: 6px 11px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--bg-soft);
+      color: var(--muted);
+      font-size: 0.78rem;
+      cursor: pointer;
+    }
+
+    footer {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 18px 14px 40px;
+      font-size: 0.74rem;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    @media (max-width: 720px) {
+      footer {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="root">
+    <header>
+      <div class="brand">
+        <div class="logo-mark">MB</div>
+        <div class="brand-text">
+          <div class="brand-text-main">MAMA BRO COLLECTION</div>
+          <div class="brand-text-sub">Curated products • Direct buy links • Affiliate powered</div>
+        </div>
+      </div>
+      <nav>
+        <button class="nav-btn active" data-section="home">Home</button>
+        <button class="nav-btn" data-section="products">All Products</button>
+        <button class="nav-btn" data-section="categories">Categories</button>
+        <button class="nav-btn" data-section="contact">Contact</button>
+      </nav>
+      <div class="header-right">
+        <button class="theme-toggle" id="themeToggle">🌙 Dark</button>
+        <button class="primary-btn">Open Full Collection</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="main-column">
+        <section class="hero" id="homeSection">
+          <div>
+            <div class="hero-title">Mama Bro Collection – Smart Shopping Hub</div>
+            <div class="hero-sub">
+              All the best hand-picked products in one page. Just tap on a product and buy directly from Amazon,
+              Flipkart or Meesho using safe official links.
+            </div>
+            <div class="hero-tags">
+              <span class="tag-pill">Budget Picks</span>
+              <span class="tag-pill">Daily Use Items</span>
+              <span class="tag-pill">Tech • Fashion • Home</span>
+            </div>
+            <div class="hero-actions">
+              <button class="primary-btn" data-scroll="productsSection">Browse All Products</button>
+              <button class="ghost-btn" data-scroll="categoriesSection">Filter by Category</button>
+            </div>
+            <div class="hero-stats">
+              <div class="hero-stat-box">Updated regularly</div>
+              <div class="hero-stat-box">All links → Official sites</div>
+            </div>
+          </div>
+          <div class="hero-right">
+            <div class="hero-right-title">Quick category shortcuts</div>
+            <div class="hero-right-sub">Choose what you are searching for. Product list below will filter.</div>
+            <div class="category-row" id="quickCategoryRow">
+              <button class="category-chip active" data-filter="all">All</button>
+              <button class="category-chip" data-filter="electronics">Electronics</button>
+              <button class="category-chip" data-filter="fashion">Fashion</button>
+              <button class="category-chip" data-filter="home">Home & Decor</button>
+              <button class="category-chip" data-filter="students">Students</button>
+              <button class="category-chip" data-filter="accessories">Accessories</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-card" id="productsSection">
+          <div class="section-header">
+            <div>
+              <div class="section-title">All Products – Mama Bro Collection</div>
+              <div class="section-sub">Click on “Buy” button → you will go to that product page on Amazon/Flipkart/Meesho.</div>
+            </div>
+            <span class="pill-small">Direct external links</span>
+          </div>
+          <div class="product-grid" id="productGrid">
+            <article class="product-card" data-category="electronics">
+              <div class="product-header">
+                <div class="product-name">Wireless Earbuds (Budget)</div>
+                <span class="product-pill">Electronics</span>
+              </div>
+              <div class="product-price">Approx. ₹499 • Ideal for music / calls</div>
+              <div class="product-tags">
+                <span class="product-tag">Bluetooth</span>
+                <span class="product-tag">Budget</span>
+              </div>
+              <div class="product-btn-row">
+                <a class="product-btn" href="https://www.amazon.in/s?k=Earbuds+under+599&crid=1HFP5P5SAGXKU&sprefix=earbuds+under+599%2Caps%2C426&linkCode=ll2&tag=mamabrocollec-21&linkId=a9734074b255377281586ba9be48bfc6&language=en_IN&ref_=as_li_ss_tl" target="_blank">Buy on Amazon</a>
+                <a class="product-btn secondary" href="https://fktr.in/PvQA7av" target="_blank">Buy on Flipkart</a>
+              </div>
+            </article>
+
+            <article class="product-card" data-category="home">
+              <div class="product-header">
+                <div class="product-name">LED Strip Lights for Room</div>
+                <span class="product-pill">Home & Decor</span>
+              </div>
+              <div class="product-price">Approx. ₹299 • Perfect for room setup</div>
+              <div class="product-tags">
+                <span class="product-tag">Lighting</span>
+                <span class="product-tag">Room decor</span>
+              </div>
+              <div class="product-btn-row">
+                <a class="product-btn" href="#" target="_blank">Buy on Amazon</a>
+              </div>
+            </article>
+
+            <article class="product-card" data-category="students">
+              <div class="product-header">
+                <div class="product-name">Study Desk Lamp</div>
+                <span class="product-pill">Students</span>
+              </div>
+              <div class="product-price">Approx. ₹499 • For study / work table</div>
+              <div class="product-tags">
+                <span class="product-tag">Study</span>
+                <span class="product-tag">Desk</span>
+              </div>
+              <div class="product-btn-row">
+                <a class="product-btn" href="#" target="_blank">Buy on Flipkart</a>
+              </div>
+            </article>
+
+            <article class="product-card" data-category="accessories">
+              <div class="product-header">
+                <div class="product-name">Mobile Tripod / Stand</div>
+                <span class="product-pill">Accessories</span>
+              </div>
+              <div class="product-price">Approx. ₹399 • For videos & calls</div>
+              <div class="product-tags">
+                <span class="product-tag">Content creator</span>
+                <span class="product-tag">Mobile</span>
+              </div>
+              <div class="product-btn-row">
+                <a class="product-btn" href="#" target="_blank">Buy on Amazon</a>
+                <a class="product-btn secondary" href="#" target="_blank">Buy on Meesho</a>
+              </div>
+            </article>
+
+            <article class="product-card" data-category="fashion">
+              <div class="product-header">
+                <div class="product-name">Classic Analog Watch</div>
+                <span class="product-pill">Fashion</span>
+              </div>
+              <div class="product-price">Approx. ₹699 • Unisex daily wear</div>
+              <div class="product-tags">
+                <span class="product-tag">Watch</span>
+                <span class="product-tag">Style</span>
+              </div>
+              <div class="product-btn-row">
+                <a class="product-btn" href="#" target="_blank">Buy on Amazon</a>
+              </div>
+            </article>
+
+            <article class="product-card" data-category="electronics">
+              <div class="product-header">
+                <div class="product-name">Power Bank (10,000 mAh)</div>
+                <span class="product-pill">Electronics</span>
+              </div>
+              <div class="product-price">Approx. ₹899 • For travel & backup</div>
+              <div class="product-tags">
+                <span class="product-tag">Battery</span>
+              </div>
+              <div class="product-btn-row">
+                <a class="product-btn" href="#" target="_blank">Buy on Amazon</a>
+              </div>
+            </article>
+          </div>
+          <div class="disclaimer">
+            Note: Some links may be affiliate links. If you purchase through them, there is no extra cost to you,
+            but Mama Bro Collection may receive a small commission from the platform.
+          </div>
+        </section>
+
+        <section class="section-card" id="categoriesSection">
+          <div class="section-header">
+            <div>
+              <div class="section-title">Browse by Category</div>
+              <div class="section-sub">Use these buttons or the chips above to filter products.</div>
+            </div>
+            <span class="pill-small">Filter only • No login needed</span>
+          </div>
+          <div class="category-row" id="bottomCategoryRow">
+            <button class="category-chip active" data-filter="all">All</button>
+            <button class="category-chip" data-filter="electronics">Electronics</button>
+            <button class="category-chip" data-filter="fashion">Fashion</button>
+            <button class="category-chip" data-filter="home">Home & Decor</button>
+            <button class="category-chip" data-filter="students">Students</button>
+            <button class="category-chip" data-filter="accessories">Accessories</button>
+          </div>
+        </section>
+      </section>
+
+      <aside class="sidebar">
+        <div class="sidebar-card" id="contactSection">
+          <div class="sidebar-title">Contact / Special Requests</div>
+          <div class="section-sub" style="margin-bottom:6px;">
+            If you want product suggestions, collabs or custom collections, fill this small form.
+          </div>
+          <div class="input-row">
+            <label>Name</label>
+            <input type="text" placeholder="Your name" />
+          </div>
+          <div class="input-row">
+            <label>Contact Email</label>
+            <input type="email" placeholder="name@example.com" />
+          </div>
+          <div class="input-row">
+            <label>Message</label>
+            <textarea rows="3" placeholder="Type your request or product type here"></textarea>
+          </div>
+          <button class="small-btn" type="button">Submit (UI only)</button>
+        </div>
+
+        <div class="sidebar-card">
+          <div class="sidebar-title">About Mama Bro Collection</div>
+          <p style="margin:0 0 6px; line-height:1.4;">
+            This site is a simple, professional list of curated products. No checkout here.
+            When you click a button, you will be taken to the official website (Amazon/Flipkart/Meesho)
+            where you can complete your purchase safely.
+          </p>
+          <p style="margin:0; font-size:0.74rem; color:var(--muted);">
+            Built as an affiliate hub – easy to update, easy to share link in YouTube, Instagram, WhatsApp.
+          </p>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      <div>© 2025 Mama Bro Collection. All rights reserved.</div>
+      <div>One link for all your favourite products – updated by creator.</div>
+      <div>created by RAMU AAKULA. Mail id: mama.bro1007@gmail.com.</div>
+    </footer>
+  </div>
+
+  <script>
+    const root = document.documentElement;
+    const toggleBtn = document.getElementById("themeToggle");
+    let isDark = true;
+
+    toggleBtn.addEventListener("click", () => {
+      isDark = !isDark;
+      if (isDark) {
+        root.removeAttribute("data-theme");
+        toggleBtn.textContent = "🌙 Dark";
+      } else {
+        root.setAttribute("data-theme", "light");
+        toggleBtn.textContent = "☀️ Light";
+      }
+    });
+
+    const navBtns = document.querySelectorAll(".nav-btn");
+    navBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        navBtns.forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        const section = btn.getAttribute("data-section");
+        if (section === "products") {
+          document.getElementById("productsSection").scrollIntoView({ behavior: "smooth" });
+        }
+        if (section === "categories") {
+          document.getElementById("categoriesSection").scrollIntoView({ behavior: "smooth" });
+        }
+        if (section === "contact") {
+          document.getElementById("contactSection").scrollIntoView({ behavior: "smooth" });
+        }
+        if (section === "home") {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      });
+    });
+
+    document.querySelectorAll("[data-scroll]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const id = btn.getAttribute("data-scroll");
+        const el = document.getElementById(id);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth" });
+        }
+      });
+    });
+
+    function setupCategoryFiltering(containerSelector) {
+      const chips = document.querySelectorAll(containerSelector + " .category-chip");
+      const products = document.querySelectorAll("#productGrid .product-card");
+
+      chips.forEach((chip) => {
+        chip.addEventListener("click", () => {
+          const filter = chip.getAttribute("data-filter");
+          document.querySelectorAll(".category-chip").forEach((c) => c.classList.remove("active"));
+          document.querySelectorAll(`[data-filter="${filter}"]`).forEach((c) => c.classList.add("active"));
+
+          products.forEach((card) => {
+            const cat = card.getAttribute("data-category");
+            if (filter === "all" || filter === cat) {
+              card.style.display = "";
+            } else {
+              card.style.display = "none";
+            }
+          });
+        });
+      });
+    }
+
+    setupCategoryFiltering("#quickCategoryRow");
+    setupCategoryFiltering("#bottomCategoryRow");
+  </script>
+</body>
+</html>t your HTML text here
