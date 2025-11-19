@@ -569,6 +569,69 @@
     from { opacity: 0.4; }
     to   { opacity: 1; }
     }
+/* FESTIVAL BANNER */
+.festival-banner {
+  width: 100%;
+  padding: 10px 0;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(90deg, #ff1b1b, #ffb300, #ff1b1b);
+  border-radius: 10px;
+  margin: 10px 0 20px 0;
+  animation: glowBanner 2s infinite alternate;
+}
+
+@keyframes glowBanner {
+  0% { box-shadow: 0 0 10px #ff1b1b; }
+  100% { box-shadow: 0 0 20px #ffb300; }
+}
+
+/* BLINKING LIGHTS BORDER */
+body.festival-mode::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: repeating-linear-gradient(
+    90deg,
+    red 0px,
+    red 20px,
+    yellow 20px,
+    yellow 40px,
+    green 40px,
+    green 60px
+  );
+  animation: blinkLights 1s infinite alternate;
+  z-index: 9999;
+}
+
+@keyframes blinkLights {
+  0% { opacity: 0.4; }
+  100% { opacity: 1; }
+}
+
+/* SNOW EFFECT  */
+.snow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9998;
+  background-image: url('https://i.imgur.com/8VQJC3C.png');
+  animation: snowFall 10s linear infinite;
+  opacity: 0.4;
+}
+
+@keyframes snowFall {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 1000px; }
+    }
   </style>
 </head>
 <body>
