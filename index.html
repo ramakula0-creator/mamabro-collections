@@ -738,6 +738,40 @@ if (shareFab) {
 /* --- Small product-card glow on hover --- */
 .product-card:hover { ... }
 
+   /* PREMIUM GOLD SOCIAL BUTTONS */
+.social-pill {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.25s ease;
+  cursor: pointer;
+}
+
+/* GOLD STYLE */
+.gold {
+  background: linear-gradient(135deg, #d4a537, #ffdf78);
+  border: 1px solid #f8e39a;
+  box-shadow: 0 0 6px rgba(255, 220, 120, 0.5);
+}
+
+.gold:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 12px rgba(255, 200, 60, 0.9);
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .social-bar {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    margin-top: 10px;
+  }
+    }
     
   </style>
 </head>
@@ -776,6 +810,30 @@ if (shareFab) {
         <button class="theme-toggle" id="themeToggle">🌙 Dark</button>
         <button class="primary-btn">Open Full Collection</button>
       </div>
+    <div class="social-bar" style="display:flex; gap:12px; margin-top:10px;">
+
+  <https://www.instagram.com/mama.bro007?utm_source=qr&igsh=MTFocThkN3ZuZHFmZw==>
+  <a href="https://www.instagram.com/mama.bro007" target="_blank">
+    <div class="social-pill gold">
+      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" width="18">
+    </div>
+  </a>
+
+  <https://youtube.com/@mama.bro_fun?sub_confirmation=1>
+  <a href="https://youtube.com/@mama.bro_fun" target="_blank">
+    <div class="social-pill gold">
+      <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" width="18">
+    </div>
+  </a>
+
+  <https://chat.whatsapp.com/HXlD2kRf3DH7fILZm8iPq6?mode=wwt>
+  <a href="https://chat.whatsapp.com/HXlD2kRf3DH7fILZm8iPq6" target="_blank">
+    <div class="social-pill gold">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" width="18">
+    </div>
+  </a>
+
+    </div>
     </header>
     </header>
 
